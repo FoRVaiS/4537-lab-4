@@ -1,0 +1,53 @@
+*, *::before, *::after {
+  font-family: system-ui, sans-serif;
+
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+:root {
+  // TailwindCss Slate Color Palette
+  --slate-50: hsl(210, 48%, 98%);
+  --slate-100: hsl(210, 48%, 96%);
+  --slate-200: hsl(214, 32%, 91%);
+  --slate-300: hsl(213, 27%, 84%);
+  --slate-400: hsl(215, 20%, 65%);
+  --slate-500: hsl(215, 16%, 47%);
+  --slate-600: hsl(215, 19%, 35%);
+  --slate-700: hsl(215, 25%, 27%);
+  --slate-800: hsl(217, 33%, 17%);
+  --slate-900: hsl(222, 47%, 11%);
+  --slate-950: hsl(229, 84%, 5%);
+
+  --size-1: 0.25rem;
+  --size-2: 0.5rem;
+  --size-3: 0.75rem;
+  --size-4: 1rem;
+  --size-5: 1.5rem;
+  --size-6: 2rem;
+  --size-7: 3rem;
+  --size-8: 4rem;
+  --size-9: 6rem;
+}
+
+.dark-theme {
+  --color-bg: var(--slate-900);
+
+  --color-primary: var(--slate-100);
+  --color-secondary: var(--slate-200);
+
+  --color-text: var(--slate-50);
+
+  color: var(--color-text);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
