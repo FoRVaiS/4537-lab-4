@@ -14,12 +14,12 @@ class Driver {
     const path = window.location.pathname;
 
     // Get the filename from the path.
-    let filename = path.split('/').pop() || '';
+    let filename = path.split('/').pop() || 'index.html';
 
     // If the filename does not end with .html, assume it is index.html.
     // This has various assumptions that are required for this logic to work
     // as intended.
-    if (!filename.endsWith('.html')) filename = 'index.html';
+    if (!filename.endsWith('.html')) filename += '.html';
 
     // Remove the .html extension from the filename.
     const page = filename.split('.').slice(0, -1).join('.').toLowerCase();
