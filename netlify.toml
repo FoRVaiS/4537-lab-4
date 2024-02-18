@@ -1,4 +1,4 @@
 [[redirects]]
-  from = "/comp4537/labs/4"
-  to = "/*"
+  from = "/comp4537/labs/4/*"
+  to = "/"
   status = 200
