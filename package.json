@@ -1,11 +1,15 @@
 {
   "scripts": {
-    "build:watch:html": "pug -o ./public ./src/index.pug --pretty --watch",
-    "build:watch:css": "sass --no-source-map ./src/styles/styles.scss:./public/styles/styles.css --watch",
-    "build:watch:js": "tsc --rootDir src/ --outDir ./public --watch",
+    "w:build:html": "npm run build:html -- --watch",
+    "w:build:css": "npm run build:css -- --watch",
+    "w:build:js": "npm run build:js -- --watch",
+    "build:html": "pug -o ./public ./src/*.pug --pretty",
+    "build:css": "sass --no-source-map ./src/styles/styles.scss:./public/styles/styles.css",
+    "build:js": "tsc -p ./tsconfig.json",
+    "build": "npm-run-all -p build:*",
     "serve": "browser-sync start --server public --files public -w",
     "clean": "rimraf public/",
-    "start": "npm-run-all clean -p build:watch:* serve"
+    "start": "npm-run-all clean -p w:build:* serve"
   },
   "devDependencies": {
     "browser-sync": "^2.27.7",

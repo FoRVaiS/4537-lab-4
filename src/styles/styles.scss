@@ -1,1 +1,160 @@
 @use "base";
+
+:root {
+  --page-layout-col:
+    [page-start]
+    auto [content-start]
+    min(100ch, calc(100% - 2rem)) [content-end]
+    auto [page-end];
+
+  --page-layout-row:
+    [page-start]
+    1rem [content-start nav-start]
+    60px [nav-end body-start]
+    min(100vh, calc(100% - 2rem)) [body-end content-end]
+    auto [page-end];
+
+  --dictionary-search-component-layout-col:
+    [start input-start results-start]
+    700px [input-end submit-start]
+    16ch [submit-end results-end start-end];
+
+  --dictionary-search-component-layout-row:
+    [input-start submit-start]
+    1fr [input-end submit-end results-start]
+    1fr [results-end];
+
+  --dictionary-store-component-layout-col:
+    [input-start results-start]
+    700px [input-end submit-start]
+    16ch [submit-end results-end];
+
+  --dictionary-store-component-layout-row:
+    [input-start submit-start]
+    1fr [input-end submit-end definition-start]
+    1fr [definition-end results-start]
+    1fr [results-end];
+}
+
+body {
+  display: grid;
+
+  grid-template-columns: var(--page-layout-col);
+  grid-template-rows: var(--page-layout-row);
+}
+
+nav, header, main, footer {
+  grid-area: content;
+}
+
+nav {
+  grid-row: nav;
+
+  display: flex;
+  gap: 1rem;
+
+  > li {
+    > a {
+      @extend .btn;
+    }
+
+    list-style: none;
+    padding: 0;
+  }
+}
+
+main {
+  grid-row: body;
+}
+
+.btn {
+  border: 1px solid white;
+  border-radius: var(--size-1);
+
+  min-width: 8ch;
+  padding: var(--size-2) var(--size-4);
+
+  color: var(--color-text);
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--color-slate-300);
+    transition: border-color 0.15s ease-in-out;
+  }
+
+  background: transparent;
+}
+
+.dictionary {
+  display: grid;
+
+  &[data-mode="search"] {
+    grid-template-columns: var(--dictionary-search-component-layout-col);
+    grid-template-rows: var(--dictionary-search-component-layout-row);
+  }
+
+  &[data-mode="store"] {
+    grid-template-columns: var(--dictionary-store-component-layout-col);
+    grid-template-rows: var(--dictionary-store-component-layout-row);
+  }
+
+  width: min-content;
+  margin: 0 auto;
+  padding-block: var(--size-6);
+
+  &__input {
+    grid-area: input;
+    width: 100%;
+
+    background: transparent;
+
+    border: 1px solid white;
+    border-right: 0;
+    border-radius: var(--size-1);
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+
+    color: var(--color-text);
+    padding: var(--size-2);
+  }
+
+  &__submit {
+    @extend .btn;
+
+    grid-area: submit;
+
+    border: 1px solid white;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  &__results {
+    grid-area: results;
+
+    border: 1px solid white;
+    border-top: 0;
+    border-radius: var(--size-1);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+
+    padding: var(--size-2);
+  }
+
+  &__definition {
+    grid-column: results-start / results-end;
+    grid-row: definition;
+    resize: none;
+
+    background: transparent;
+    border: 1px solid white;
+    border-top: 0;
+
+    padding: var(--size-2);
+    color: var(--color-text);
+  }
+}

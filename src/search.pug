@@ -5,7 +5,7 @@ html(lang="en")
         meta(http-equiv="X-UA-Compatible" content="IE=edge")
         meta(name="viewport" content="width=device-width, initial-scale=1.0")
         link(rel="stylesheet" href="./styles/styles.css")
-        title COMP4537 Lab-4 - Home
+        title COMP4537 Lab-4 - Search
     body.dark-theme
         nav
           li
@@ -15,7 +15,10 @@ html(lang="en")
           li
             a(href="/search.html") Search
         main
-          h1 4537 Lab-4
-          br
-          p An application to store the definitions of words and look them up using a REST API.
+          h1 Search
+
+          div(data-mode="search").dictionary
+            input(type="text", name="dictionary", placeholder="Book", tabindex="0").dictionary__input
+            button(type="submit", tabindex="1").dictionary__submit Search
+            p.dictionary__results
         script(src="./js/script.js", type="module")
