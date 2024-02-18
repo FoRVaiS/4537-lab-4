@@ -1,7 +1,7 @@
 import { StorePage } from './pages/StorePage.js';
 import { SearchPage } from './pages/SearchPage.js';
 
-const API = 'http://localhost:8080';
+const API = 'https://comp-4537-lab-4-api.vercel.app';
 const ENDPOINT = `${API}/api/definitions/`;
 
 const PAGE_HANDLER_MAP: Record<string, new (api: string) => unknown> = {
